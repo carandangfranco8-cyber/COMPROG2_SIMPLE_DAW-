@@ -22,7 +22,7 @@ def play_case(case, evidence_map1):
     victim = case["victim"]
 
     print(f"\n{case['name']}")
-    print(f"Victim: {victim['name']}, {victim['age']}, {victim['career']}")
+    print(f"Victim: \n\tName: {victim['name']},\n\tAge: {victim['age']},\n\tCareer: {victim['career']}")
     print(f"Location: {case['location']}")
 
     # STEP 1: Evidence
