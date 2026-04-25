@@ -4,7 +4,7 @@
 evidence_map1 = {
     "Soup": ["Poisoning", "Allergic Reaction"],
     "Roasted Chicken": ["Poisoning", "Choking"],
-    "Ice Cream": ["Allergic Reaction", "Intolerance"],
+    "Ice Cream": ["Allergic Reaction", "Intolerance"], #Poisoned
     "Steak": ["Choking"],
     "Salad": ["Poisoning"],
     "Condiments": ["Poisoning"]
