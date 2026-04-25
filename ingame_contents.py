@@ -1,14 +1,30 @@
 
+#MAKE ANOTHER EVIDENCE MAP1
 
-
-evidence_map1 = {
-    "Soup": ["Poisoning", "Allergic Reaction"],
+evidence_map1 =  {
     "Roasted Chicken": ["Poisoning", "Choking"],
-    "Ice Cream": ["Allergic Reaction", "Intolerance"], #Poisoned
+    "Ice Cream": ["Allergic Reaction", "Intolerance"],
+    "Soup": ["Poisoning"], #Poisoned
     "Steak": ["Choking"],
     "Salad": ["Poisoning"],
     "Condiments": ["Poisoning"]
 }
+
+
+evidence_map11 = [
+"Soup: “Only item reheated before serving. Minor temperature fluctuation recorded during holding stage.”",
+
+"Roasted Chicken: “Even seasoning confirmed across all portions. No anomalies detected in prep.”",
+
+"Ice Cream: “Continuous freezer monitoring shows no interruptions.”",
+
+"Steak: “Served immediately after cooking, no holding time.”",
+
+"Salad: “All ingredients individually verified clean before mixing.”",
+
+"Condiments: “Frequently used but properly sealed and replaced during service.”"
+    
+]
 
 
 cases = [
@@ -28,11 +44,10 @@ cases = [
 
 
 cause_of_death = [
-  "Poisoning", 
+  "Stab Wound", 
   "Allergic Reaction", 
   "Complication",
   "Choking",
-  "Intolerance"
   ]
 
 

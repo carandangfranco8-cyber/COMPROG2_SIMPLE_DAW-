@@ -1,5 +1,6 @@
 import utility
 import time
+<<<<<<< HEAD
 import os
 import subprocess
 import ingame_contents
@@ -66,6 +67,13 @@ print("Location: Angel’s Share Kitchen\n")
 print("You arrive at the crime scene...")
 
 utility.run_game(starting_reputation)
+=======
+
+
+utility.case()
+
+
+>>>>>>> bb415bafaf0a98a7513bc318c4cd0280b7e2c3dd
 
 print(f"""
         {"\n" * 20}

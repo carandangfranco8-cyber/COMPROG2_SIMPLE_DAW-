@@ -4,8 +4,11 @@ class G_State:
 
 
 
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> bb415bafaf0a98a7513bc318c4cd0280b7e2c3dd
 class Suspect:
     def __init__(self, name, job):
         self.name = name
