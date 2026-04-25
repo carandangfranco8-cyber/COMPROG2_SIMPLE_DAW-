@@ -1,11 +1,7 @@
 import random
 import ingame_contents
-
+import utility
 
 def reputation():
-    reputation = random.randint(1, 10)
-    return reputation   
-
-def culprit():
-    culprit = random.choice(ingame_contents.suspect)
-    return
+    return random.randint(5, 10)
+    

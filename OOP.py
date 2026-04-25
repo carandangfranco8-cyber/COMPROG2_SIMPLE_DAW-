@@ -4,8 +4,6 @@ class G_State:
 
 
 
-
-
 class Suspect:
     def __init__(self, name, job):
         self.name = name
