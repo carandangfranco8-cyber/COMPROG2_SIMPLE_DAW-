@@ -44,8 +44,8 @@ print("CONGRATULATIONS! You are now a detective, ready to solve your first case!
 input("\nPress Enter to continue...")
 
 #start game
-utility.case(starting_reputation)
 
+utility.run_game(starting_reputation,chosen_character)
 
 
 

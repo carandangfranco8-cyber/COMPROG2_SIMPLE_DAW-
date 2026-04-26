@@ -3,9 +3,8 @@ import ingame_contents
 
 
 def reputation():
-    reputation = random.randint(1, 10)
-    return reputation   
+    return random.randint(5, 10) 
 
 def culprit():
-    culprit = random.choice(ingame_contents.suspect)
-    return
+    return random.choice(ingame_contents.suspect)
+    
