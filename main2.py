@@ -40,35 +40,13 @@ print(f"\nYOU ROLLED: {chosen_character}!")
 print(f"Starting Reputation: {starting_reputation}")
 print(f"\n{'='*50}")
 time.sleep(1.5)
-print("CONGRATULATIONS! You are now a detective in the city of 1882, ready to solve your first case!")
+print("CONGRATULATIONS! You are now a detective, ready to solve your first case!")
 input("\nPress Enter to continue...")
 
 #start game
-clear()
-print("\t\t","*" * 30)
-print("""
-      \t\tYou are now in the crime scene!!""")
-
-print(f"""\n
-          Detective 1882 – Sherlock Swagman Case
-          A murder has occurred at Angel’s Share restaurant...
-      
-                Playing as: {chosen_character}
-                Reputation: {starting_reputation}
-                """)
-    
-time.sleep(2)
-
-print("\n\nVictim: Robert")
-print("Cause of Death: Anaphylaxis due to poisoning")
-print("Location: Angel’s Share Kitchen\n")
-
-print("You arrive at the crime scene...")
-
-utility.run_game(starting_reputation)
+utility.case(starting_reputation)
 
 
-utility.case()
 
 
 print(f"""

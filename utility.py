@@ -8,13 +8,47 @@ cases = ingame_contents.cases
 cause_of_death = ingame_contents.cause_of_death
 evidence_map1 = ingame_contents.evidence_map1
 
+
+def case(reputation):
+        
+        while True:
+            print(f"\n{"*" * 10}Main Menu{"*" * 10}\n\n")
+
+            print("REPUTATION: ", reputation)
+
+            print(f"""
+                    1. CASE 1
+                    2. CASE 2
+                    3. Exit
+                  
+                   """)
+            
+            try:
+                choose = int(input("Enter your guess (1-4):"))
+            except ValueError:
+                print("Please enter a valid number.")
+                continue
+            
+            if choose == 1:
+                print("""\n
+                Detective 1882 – Sherlock Swagman Case
+                A murder has occurred at Angel’s Share restaurant...""")
+            
+                time.sleep(2.5)
+
+                run_game(reputation)
+                
+            elif choose == 2:
+                pass
+            elif choose == 3: 
+                break
+
+
 def run_game(starting_reputation):
     case_index = 0
 
     while True:
-        rep = OOP.G_State()
         rep.reputation = starting_reputation
-
         print(f"\n{'='*40}")
         print(f"  INVESTIGATION — CASE {case_index + 1}")
         print(f"  Reputation: {rep.reputation}")
@@ -52,6 +86,26 @@ def run_game(starting_reputation):
 
 
 def menu(rep):
+    clear()
+    print("\t\t","*" * 30)
+    print("""
+        \t\tYou are now in the crime scene!!""")
+
+    print(f"""\n
+            Detective 1882 – Sherlock Swagman Case
+            A murder has occurred at Angel’s Share restaurant...
+        
+                    Playing as: {chosen_character}
+                    Reputation: {starting_reputation}
+                    """)
+        
+    time.sleep(2)
+
+    print("\n\nVictim: Robert")
+    print("Cause of Death: Anaphylaxis due to poisoning")
+    print("Location: Angel’s Share Kitchen\n")
+
+    print("You arrive at the crime scene...")
 
     while True:
         print(f"\n\n{"*" * 10}Main Menu{"*" * 10}\n")
