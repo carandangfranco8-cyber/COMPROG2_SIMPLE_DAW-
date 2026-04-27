@@ -5,11 +5,18 @@ import ingame_contents
 import OOP
 
 
-
+#CASE 1
 cases = ingame_contents.cases
 cause_of_death = ingame_contents.cause_of_death
 evidence_map1 = ingame_contents.evidence_map1
+evidence_map11 = ingame_contents.evidence_map11
 
+#CASE 2
+cases2 = ingame_contents.cases2
+cause_of_death2 = ingame_contents.cause_of_death_2
+evidence_map2 = ingame_contents.evidence_map2
+evidence_map22 = ingame_contents.evidence_map22
+cause_of_death_2 = ingame_contents.cause_of_death_2
 
 
 def run_game(starting_reputation, character):
@@ -24,10 +31,12 @@ def run_game(starting_reputation, character):
         print(f"{'='*40}\n")
         time.sleep(1)
 
-        case_solved = menu(starting_reputation, character)
+
+        rep2,case_solved = menu(rep, character)
+        
 
         # --- End of investigation check ---
-        if rep < 5:
+        if rep2 < 5:
             print("\n" + "="*40)
             print("  INVESTIGATION FAILED!")
             print("  Your reputation is too low.")
@@ -44,6 +53,13 @@ def run_game(starting_reputation, character):
             case_index += 1
             print(f"\n{'='*40}")
             print(f"  Case solved! Advancing to Case {case_index + 1}...")
+            print(f"\n{'='*40}")
+            print(f"  INVESTIGATION — CASE {case_index + 1}")
+            print(f"  Reputation: {rep2}")
+            print(f"{'='*40}\n")
+            time.sleep(1)
+            ch = character
+            case_solved = menu2(rep2, ch)
             print(f"{'='*40}")
             time.sleep(2)
             if case_index == 2:
@@ -62,7 +78,7 @@ def menu(rep,character):
         \t\tYou are now in the crime scene!!""")
 
     print(f"""\n
-            Detective 1882 – Sherlock Swagman Case
+            Detective 1882 – {character} Case
             A murder has occurred at Angel’s Share restaurant...
         
                     Playing as: {character}
@@ -72,7 +88,7 @@ def menu(rep,character):
     time.sleep(2)
 
     print("\n\nVictim: Robert")
-    print("Cause of Death: Anaphylaxis due to poisoning")
+    print("Cause of Death: Unknown")
     print("Location: Angel’s Share Kitchen\n")
 
     print("You arrive at the crime scene...")
@@ -103,15 +119,13 @@ def menu(rep,character):
             Interogate()
             continue
         elif choose == 3: 
-            result = Accuse(reputation)
+            reputation, result = Accuse(reputation)
             if result == True:
-                return True
+                return reputation,True
             else:
                 continue
         elif choose == 4:
             return False
-            
-           
         
 def hint(proof):
     print(f"\n\n\n{"*"*10}EVIDENCE{"*"*10}")
@@ -131,8 +145,14 @@ def play_case(case, evidence_map1, rep):
 
     # STEP 1: Evidence
     evidences = list(evidence_map1.keys())
+    evidence_hint = evidence_map11
 
     while True:
+
+        print("\nBASED ON THE REPORT:\n")
+        for i, c in enumerate(evidence_hint):
+            print(f"{i+1}. {c}")
+            time.sleep(1)
 
         print("\nChoose Evidence:")
         for i, e in enumerate(evidences):
@@ -236,8 +256,6 @@ def Investigate(rep):
     
     time.sleep(3)
     
-
-        
 def Interogate():
         melvin = OOP.THREE("MELVIN","WAITER")
         jen = OOP.ONE("JENNSKY","KITCHEN STUFF")
@@ -275,7 +293,7 @@ def Accuse(rep):
     print(f"\n{"*" * 10}SUSPECT{"*" * 10}\n") 
 
     suspects = (jen, melvin, franco)
-
+    
     for i, e in enumerate(suspects):
         print(f"{i+1}. {e.name}")
 
@@ -292,7 +310,7 @@ def Accuse(rep):
         selected.accuse()
         reputation += 20
         time.sleep(1.5)
-        return True
+        return reputation,True
         
 
     else:
@@ -301,4 +319,317 @@ def Accuse(rep):
         time.sleep(2)
         return False
        
+#####################################################
+    victim = case["victim"]
 
+    print(f"\n{case['name']}")
+    print(f"Victim: \n\tName: {victim['name']},\n\tAge: {victim['age']},\n\tCareer: {victim['career']}")
+    print(f"Location: {case['location']}")
+
+    # STEP 1: Evidence
+    evidences = list(evidence_map2.keys())
+    evidence_hint = evidence_map22
+
+    while True:
+
+        print("\nBASED ON THE REPORT:\n")
+        for i, c in enumerate(evidence_hint):
+            print(f"{i+1}. {c}")
+            time.sleep(1)
+
+        print("\nChoose Evidence:")
+        for i, e in enumerate(evidences):
+            print(f"{i+1}. {e}")
+
+        try:
+            choice = int(input("\nSelect evidence: ")) - 1
+        except ValueError:
+            print("Please enter a valid number.")
+            continue
+        
+        if choice > len(evidences):
+            print("INVALID")
+            continue
+
+        selected_evidence = evidences[choice]
+
+        if selected_evidence == "Gunshot":
+            possible_causes = evidence_map2[selected_evidence]
+            choices = generate_choices(victim["cause_of_death"], possible_causes)
+        else:
+            time.sleep(1)
+            print("\n\nWrong!! Reputation Decreased\n\nWalang Bitaw ya!\n")
+            lost = random_module.reputation()
+            rep -= lost
+            print(f"REPUTATION DECREASED BY: {lost} ")
+            print(f"REPUTATION: {rep} \n")
+        
+            if rep < 0:
+                print("\n" + "="*40)
+                print("  INVESTIGATION FAILED!")
+                print("  Your reputation is too low.")
+                print("  You have LOST YOUR JOB.")
+                print("="*40)
+                time.sleep(3)
+                case_index = 0          # reset back to first case
+                input("\nPress Enter to try again...\n")
+                import main2  # restart the game
+                main2
+                break               
+                
+            else:
+                continue
+
+        print("\nPossible causes:")
+        for i, c in enumerate(choices):
+            print(f"{i+1}. {c}")
+
+
+        answer = int(input("\nChoose cause of death: ")) - 1
+
+        return choices[answer] == victim["cause_of_death"]
+
+
+#####################################################################
+
+def generate_choices2(correct_answer, possible_causes):
+    
+    wrong = [c for c in cause_of_death_2 if c not in possible_causes]
+
+    wrong_choices = random.sample(wrong, 2)
+
+    choices = wrong_choices + [correct_answer]
+    random.shuffle(choices)
+
+    return choices
+
+def Interogate2():
+        melvin = OOP.THREE("FRANCO","WITNESS")
+        jen = OOP.ONE("MELVIN","HITMAN")
+        francon = OOP.TWO("IAN", "ANGEL STAFF")
+
+        print(f"\n{"*" * 10}INTEROGATE{"*" * 10}\n\n")
+        print(f"\n{"*" * 10}SUSPECT{"*" * 10}\n") 
+    
+       
+        suspects = (jen, melvin, francon)
+
+        for i, e in enumerate(suspects):
+            print(f"{i+1}. {e.name}")
+
+        try:
+            choose = int(input("\nChoose suspect to interrogate: "))-1
+        except ValueError:
+            print("Invalid input.")
+            return
+
+    
+        print("\nWhere are you? Are you the killer?\n")
+        suspects[choose].speak_2()
+        time.sleep(3)
+
+def Accuse2 (rep):
+    global reputation
+    reputation = rep
+    melvin = OOP.THREE("MELVIN","WAITER")
+    jen = OOP.ONE("JENNSKY","KITCHEN STUFF")
+    franco = OOP.TWO("FRANCO", "HEAD CHEF")
+
+
+    print(f"\n{"*" * 10}WHO IS THE CRIMANAL{"*" * 10}\n\n")
+    print(f"\n{"*" * 10}SUSPECT{"*" * 10}\n") 
+
+    suspects = (jen, melvin, franco)
+    
+    for i, e in enumerate(suspects):
+        print(f"{i+1}. {e.name}")
+
+    try:
+        choose = int(input("\nChoose suspect to interrogate: "))-1
+    except ValueError:
+        print("Invalid input.")
+        return
+    
+    selected = suspects[choose]
+
+    if selected.name == "FRANCO":
+        print("\n\nCORRECT!! Case Solved!")
+        selected.accuse()
+        reputation += 20
+        time.sleep(1.5)
+        return reputation,True
+        
+
+    else:
+        selected.accuse()
+        reputation -= 15
+        time.sleep(2)
+        return False
+
+def hint2(case):
+    print(f"\n\n\n{'*'*10} EVIDENCE {'*'*10}")
+    
+    print("\n", case["HINT"], "\n")
+    
+    for evidence, description in case["HINTS"].items():
+        print(evidence)
+        print(description)
+
+def play_case2(case, evidence_map2, rep):
+    victim = case["victim"]
+
+    print(f"\n{case['name']}")
+    print(f"Victim: \n\tName: {victim['name']},\n\tAge: {victim['age']},\n\tCareer: {victim['career']}")
+    print(f"Location: {case['location']}")
+
+    # STEP 1: Evidence
+    evidences = list(evidence_map2.keys())
+    evidence_hint = evidence_map22
+
+    while True:
+
+        print("\nPossible Causes of Accident:")
+        for i, e in enumerate(evidences):
+            print(f"{i+1}. {e}")
+
+        try:
+            choice = int(input("\nSelect Possible Cause: "))-1
+        except ValueError:
+            print("Please enter a valid number.")
+            continue
+        
+        if choice < 1 or choice > len(evidences):
+            print("INVALID")
+            continue
+
+        selected_evidence = evidences[choice]
+
+        if selected_evidence == "Victim Misidentified":
+            possible_causes = evidence_map2[selected_evidence]
+            choices = generate_choices2(victim["cause_of_death"], possible_causes)
+        else:
+            time.sleep(1)
+            print("\n\nWrong!! Reputation Decreased\n\nWalang Bitaw ya!\n")
+            lost = random_module.reputation()
+            rep -= lost
+            print(f"REPUTATION DECREASED BY: {lost} ")
+            print(f"REPUTATION: {rep} \n")
+        
+            if rep < 0:
+                print("\n" + "="*40)
+                print("  INVESTIGATION FAILED!")
+                print("  Your reputation is too low.")
+                print("  You have LOST YOUR JOB.")
+                print("="*40)
+                time.sleep(3)
+                case_index = 0          # reset back to first case
+                input("\nPress Enter to try again...\n")
+                import main2  # restart the game
+                main2
+                break               
+                
+            else:
+                continue
+
+        print("\nPossible causes:")
+        for i, c in enumerate(choices):
+            print(f"{i+1}. {c}")
+
+
+        answer = int(input("\nChoose cause of the old Man death: ")) - 1
+
+        return choices[answer] == victim["cause_of_death"]
+
+def Investigate2(rep):
+    global reputation
+    reputation = rep
+
+    hint2(ingame_contents.evidence_2)
+    time.sleep(1.5)
+
+    evidences = list(evidence_map2.keys())
+
+    for case in cases2:
+        correct = play_case2(case, evidence_map2, rep)
+
+    if correct:
+        print("\n\nCorrect! Reputation Increase")
+        reputation += 10
+        return True
+
+    else:
+        print("\n\nWrong!! Reputation Decreased")
+        reputation -= 15
+
+    if reputation < 0:
+        print("\n" + "="*40)
+        print("  INVESTIGATION FAILED!")
+        print("  Your reputation is too low.")
+        print("  You have LOST YOUR JOB.")
+        print("="*40)
+        time.sleep(3)
+        case_index = 0          # reset back to first case
+        input("\nPress Enter to try again...\n")
+        import main2  # restart the game
+        main2
+                    
+
+    
+    time.sleep(3)
+
+def menu2(rep,character):
+    global reputation
+    reputation = rep
+    print("\t\t","*" * 30)
+    print("""
+        \t\tYou are now in the crime scene!!""")
+
+    print(f"""\n
+            Detective 1882 – {character} Case
+            A murder has occurred at Angel’s Share restaurant...
+        
+                    Playing as: {character}
+                    Reputation: {reputation}
+                    """)
+        
+    time.sleep(2)
+
+    print("\n\nVictim: Unnamed Old Man")
+    print("Cause of Death: Unknown")
+    print("Location: Angel’s Staff\n")
+
+    print("You arrive at the crime scene...")
+
+    while True:
+        print(f"\n\n{"*" * 10}Main Menu{"*" * 10}\n")
+
+        print(f"REPUTATION: {reputation}")
+
+        print(f"""
+                1. Investigate Evidence
+                2. Interrogate Suspect
+                3. Accuse
+                4. Exit
+              
+               """)
+        
+        try:
+            choose = int(input("Enter your guess (1-4):"))
+        except ValueError:
+            print("Please enter a valid number.")
+            continue
+        
+        if choose == 1:
+            Investigate2(reputation)
+            
+        elif choose == 2:
+            Interogate2()
+            continue
+        elif choose == 3: 
+            reputation, result = Accuse2(reputation)
+            if result == True:
+                return reputation,True
+            else:
+                continue
+        elif choose == 4:
+            return False

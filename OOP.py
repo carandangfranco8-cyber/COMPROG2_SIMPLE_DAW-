@@ -61,7 +61,7 @@ class THREE(Suspect):
     def speak_2(self):
         print(f"""
         "name": {self.name}:,
-        "role": "{self.job} STATUS (DEAD)", """)
+        "role": "{self.job}" """)
         print("DIALOGUE: ”“And about the old man… Mistakes happen in crowded environments. Wrong place, wrong timing. That’s all it is.” ")
 
 

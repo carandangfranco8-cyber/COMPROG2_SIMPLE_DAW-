@@ -6,17 +6,15 @@ evidence_map1 =  {
     "Ice Cream": ["Allergic Reaction", "Intolerance"],
     "Soup": ["Poisoning"], #Poisoned
     "Steak": ["Choking"],
-    "Salad": ["Poisoning"],
+    "Salad": ["Poisoning"], 
     "Condiments": ["Poisoning"]
 }
 
 evidence_map2 = {
-    "Bullet Shell": ["Assassination Attempt"],
-    "Old Man": ["Murder"],
-    "Phone": ["Communication Breakdown"],
-    "Notebook": ["Confession Evidence"],
-    "Angel’s Staff": ["Location Link"],
-    "Kitchen Tools": ["Poisoning", "Murder Planning"]
+    "Weapon Malfunction": ["Wrong"],
+    "Assassin Missed Shot": ["Wrong"],
+    "Victim Misidentified": ["Failure caused by the victim being identified incorrectly at the scene"],
+    "External Interference": ["Wrong"]
 }
 
 evidence_map3=  {
@@ -101,7 +99,7 @@ cases3 = [
             "career": "Diplomat",
             "cause_of_death": "Poisoning"
         },
-        "location": "Diplomat Residence"
+            "location": "Diplomat Residence"
     }
     ]
 
@@ -112,9 +110,10 @@ cases2 = [
         "name": "Unnamed Old Man",
         "age": "68",
         "career": "Civilian",
-        "cause_of_death": "Gunshot"
+        "cause_of_death": "Failure caused by the victim being identified incorrectly at the scene",
         },
         "location": "Angel’s Staff"
+        
     },
 ]
 
@@ -125,13 +124,15 @@ cause_of_death = [
   "Choking",
   ]
 
+
 cause_of_death_2 = [
-    "Poisoning",
-    "Stab Wound",
-    "Allergic Reaction",
-    "Choking",
-    "Complication"
+    "Failure caused by weapon malfunction during execution",
+
+    "Failure caused by the assassin missing the target during the shot",
+
+    "Failure caused by external interference after the assassination attempt"
 ]
+
 
 cause_of_death_3 = [
     "Stab Wound", 
@@ -157,16 +158,16 @@ evidence_1 = [
 evidence_2 = {
         "HINT": "CASE 2 - Failed Assassination Incident",
         "HINTS": {
-            "Bullet Shell": "--Trajectory suggests the shot was not fired from a random position, but from a controlled line of sight.",
-            
-            "Phone Call": "--Final transmission contains signs of urgency followed by an abrupt disruption in communication flow.",
-            
-            "Notebook": "--Entries show inconsistencies between payment expectations and operational instructions.",
-            
-            "Angel’s Staff": "--Location repeatedly referenced in connection with personnel movement and internal coordination.",
-            
-            "Old Man Scene": "--Victim appears to be unintended target, indicating misdirection during execution."
-        }
+        "Bullet Shell": "--Confirms the shot was accurate. The weapon worked as intended.",
+
+        "Phone Call": "--Final call shows panic and sudden interruption. Suggests communication broke during the mission.",
+
+        "Notebook": "--Contains wrong or unclear instructions from the start. Indicates the plan itself was flawed.",
+
+        "Angel’s Staff": "--Only shows where people were moving. Not related to why the mission failed.",
+
+        "Old Man Scene": "--Victim was not the intended target. This is the RESULT of the failure, not the cause."
+    }
     }
  
 evidence_3 = [

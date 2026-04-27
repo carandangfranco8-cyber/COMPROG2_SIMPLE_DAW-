@@ -11,9 +11,9 @@ def clear():
 
 #start up menu
 random_module.reputation()
-print("\t\t","*" * 50)
+print("\t\t","*" * 55)
 print("\n\t\t\tWELCOME TO Detective 1882 – Text Game!!\n")
-print("\t\t","*" * 50)
+print("\t\t","*" * 55)
 time.sleep(2)
 print("\n\n\t\tTo start, first roll a character to set your reputation")
 time.sleep(1)
@@ -44,6 +44,7 @@ print("CONGRATULATIONS! You are now a detective, ready to solve your first case!
 input("\nPress Enter to continue...")
 
 #start game
+
 
 utility.run_game(starting_reputation,chosen_character)
 
