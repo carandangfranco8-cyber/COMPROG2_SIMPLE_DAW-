@@ -47,9 +47,9 @@ evidence_map22 = [
 
 "Bullet Shell: “Recovered from the rooftop line of fire. Caliber matches standard hired-hit equipment.”",
 
-"Old Man: “Victim confirmed collateral damage after bodyguard intervention redirected the shot.”",
+"Old Man: “Victim confirmed collateral damage, dead infront of the counter.”",
 
-"Phone: “Last outgoing call shows sudden interruption followed by background struggle sounds.”",
+"Phone: “Last call shows victim’s panic and sudden interruption. Suggests communication broke during the mission.”",
 
 "Notebook: “Contains fragmented entries about payment delay and employer identity hints.”",
 
