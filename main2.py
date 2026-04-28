@@ -5,26 +5,40 @@ import subprocess
 import ingame_contents
 import random_module
 import random
+import textwrap
+import shutil
 
 def clear():
     subprocess.run('cls' if os.name == 'nt' else 'clear', shell=True)
 
 #start up menu
 random_module.reputation()
-print("\t\t","*" * 55)
-print("\n\t\t\tWELCOME TO Detective 1882 – Text Game!!\n")
-print("\t\t","*" * 55)
+print("\t\t\t\t\t","*" * 110)
+print("\n\t\t\t\t\t\t\t\t\t\tWELCOME TO Detective 1882 – Text Game!!\n")
+print("\t\t\t\t\t","*" * 110)
 time.sleep(2)
-print("\n\n\t\tTo start, first roll a character to set your reputation")
+print("\n\n\t\t\t\t\t\t\t\t\tTo start, first roll a character to set your reputation")
 time.sleep(1)
-print("CHARACTERS:")
-characters = {"Detective Daniel":10, "Detective Marc":8, "Detective Melvin":14,"Detective Ian":5}
-for key in characters.keys():
-    print(f"{key:<{15}}", end="\t")
+
+
+characters = {"Detective Daniel":10, 
+              "Detective Marc":8, 
+              "Detective Melvin":14,
+              "Detective Ian":5}
+
+#centered title
+print("CHARACTERS:".center(200))
+
+#print names in column
+for name in characters:
+    print(name.center(50), end="")
 print()
-for value in characters.values():
-    print(f"{value:<{15}}", end="\t\t")
+
+#print scores in column under names
+for score in characters.values():
+    print(str(score).center(50), end="")
 print()
+
 input("\nPress Enter to roll the dice...")
 print("\n🎲 ROLLING DICE", end="")
 for i in range(15):
@@ -36,13 +50,12 @@ chosen_character = random.choice(list(characters.keys()))
 starting_reputation = characters[chosen_character]
 
 # Dramatic reveal
-print(f"\nYOU ROLLED: {chosen_character}!")
-print(f"Starting Reputation: {starting_reputation}")
-print(f"\n{'='*50}")
+print(f"\nYOU ROLLED: {chosen_character}!.".center(200))
+print(f"Starting Reputation: {starting_reputation}".center(200))
+print(f"\n{'='*195}")
 time.sleep(1.5)
 print("CONGRATULATIONS! You are now a detective, ready to solve your first case!")
 input("\nPress Enter to continue...")
-
 #start game
 
 
@@ -54,3 +67,4 @@ print(f"""
         {"\n" * 20}
         THANK YOU {"\n" * 10}""")
 
+#done with this

@@ -67,3 +67,27 @@ class THREE(Suspect):
 
     def accuse(self):
         print("ARE YOU STUPID?")
+
+     #OOP MODULE
+
+class Character:
+    def __init__(self, name):
+        self.name = name
+
+    def speak(self):
+        return "..."
+
+
+class Detective(Character):
+    def investigate(self):
+        return "Analyzing the crime scene..."
+
+
+class Suspect(Character):
+    def alibi(self):
+        return f"{self.name} gives an alibi."
+
+
+class Witness(Character):
+    def clue(self):
+        return "I saw something suspicious..."
