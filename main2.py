@@ -50,7 +50,7 @@ chosen_character = random.choice(list(characters.keys()))
 starting_reputation = characters[chosen_character]
 
 # Dramatic reveal
-print(f"\nYOU ROLLED: {chosen_character}!.".center(200))
+print(f"\nYOU ROLLED: {chosen_character}!.".center(400))
 print(f"Starting Reputation: {starting_reputation}".center(200))
 print(f"\n{'='*195}")
 time.sleep(1.5)
@@ -63,8 +63,5 @@ utility.run_game(starting_reputation,chosen_character)
 
 
 
-print(f"""
-        {"\n" * 20}
-        THANK YOU {"\n" * 10}""")
 
-#done with this
+
