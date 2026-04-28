@@ -17,11 +17,12 @@ evidence_map2 = {
     "External Interference": ["Wrong"]
 }
 
-evidence_map3 = {
+evidence_map3=  {
     "Tea": ["Poisoning"],  # poisoned drink (main clue)
     "Finger Sandwiches": ["Poisoning"],
     "Fruit Platter": ["Allergic Reaction"],
     "Wine": ["Complication"],
+    "Pastries": ["Choking"],
     "Condiments Tray": ["Poisoning"]
 }
 
@@ -46,9 +47,9 @@ evidence_map22 = [
 
 "Bullet Shell: “Recovered from the rooftop line of fire. Caliber matches standard hired-hit equipment.”",
 
-"Old Man: “Victim confirmed collateral damage after bodyguard intervention redirected the shot.”",
+"Old Man: “Victim confirmed collateral damage, dead infront of the counter.”",
 
-"Phone: “Last outgoing call shows sudden interruption followed by background struggle sounds.”",
+"Phone: “Last call shows victim’s panic and sudden interruption. Suggests communication broke during the mission.”",
 
 "Notebook: “Contains fragmented entries about payment delay and employer identity hints.”",
 
@@ -58,8 +59,8 @@ evidence_map22 = [
 
 ]
 
-evidence_map44 = [
-"Tea: “Only drink served personally by a GUEST before the gathering began. Cup shows trace contamination before service time.”",
+evidence_map33 = [
+"Tea: “Only drink served personally by a guest before the gathering began. Cup shows trace contamination before service time.”",
 
 "Finger Sandwiches: “Prepared in batches and left on table during the event. No immediate tampering observed.”",
 
@@ -67,8 +68,11 @@ evidence_map44 = [
 
 "Wine: “Opened during the gathering, shared among multiple guests. No early contamination found.”",
 
+"Pastries: “Stored in open display tray. Risk of accidental choking due to dry texture.”",
+
 "Condiments Tray: “Prepared before guests arrived. Frequently handled but no mid-event contamination detected.”"
 
+    
 ]
 
 
@@ -108,7 +112,7 @@ cases2 = [
         "career": "Civilian",
         "cause_of_death": "Failure caused by the victim being identified incorrectly at the scene",
         },
-        "location": "COUNTRYSNACK"
+        "location": "Angel’s Staff"
         
     },
 ]
@@ -135,6 +139,7 @@ cause_of_death_3 = [
     "Allergic Reaction", 
     "Complication",
     "Choking",
+    "Poisoning"
 ]
 
 
@@ -169,15 +174,15 @@ evidence_3 = [
     {
         "HINT": "CASE 3",
         "HINTS": {
-            "Tea Cup": "--A faint trace lingers in the drink, something that shouldn’t be there.",
+            "Tea Cup": "--Thermal residue analysis suggests the drink's condition does not fully align with the reported serving timeline.",
             
-            "Guest Statements": "--They agree on when it was served, but not on its condition.",
+            "Guest Statements": "--Several accounts disagree on the sequence of beverage distribution, particularly regarding initial service.",
             
-            "Serving Tray": "--One cup seems to have been set apart before the others.",
+            "Serving Tray": "--Only one item shows handling patterns inconsistent with collective serving activity.",
             
-            "Kitchen Log": "--Preparation was completed earlier than the gathering suggests.",
+            "Kitchen Log": "--Preparation records contain a timing gap that does not match recorded guest arrival flow.",
             
-            "Medical Report": "--The reaction began quietly, long before anyone noticed."
+            "Observation Note": "--Toxic effect onset suggests exposure occurred outside the assumed interaction window."
         }
     }
 ]
